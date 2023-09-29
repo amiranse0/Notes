@@ -275,5 +275,6 @@
     </plurals>
     <!-- format values: date, time -->
     <string name="date_rel_absolute">%1$s, %2$s</string>
+    <string name="language">language</string>
 
 </resources>

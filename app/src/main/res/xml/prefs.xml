@@ -32,6 +32,17 @@
             app:useSimpleSummaryProvider="true"
             />
 
+        <DropDownPreference
+            app:defaultValue="persian"
+            app:entries="@array/pref_locales_entries"
+            app:entryValues="@array/pref_locales_values"
+            app:icon="@drawable/baseline_language_24"
+            app:key="locale"
+            app:title="@string/language"
+            app:useSimpleSummaryProvider="true"
+            />
+
+
         <SwitchPreferenceCompat
             android:defaultValue="true"
             app:key="dynamic_colors"

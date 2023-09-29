@@ -186,6 +186,12 @@ class SettingsFragment : PreferenceFragmentCompat(), ConfirmDialog.Callback, Exp
             true
         }
 
+        requirePreference<DropDownPreference>(PrefsManager.LOCALE).setOnPreferenceChangeListener { _, locale ->
+            Log.d("LOCALE", locale as String)
+            (context.applicationContext as App).updateLocale(locale as String, activity)
+            true
+        }
+
         requirePreference<Preference>(PrefsManager.DYNAMIC_COLORS).apply {
             if (DynamicColors.isDynamicColorAvailable()) {
                 setOnPreferenceClickListener {

@@ -16,11 +16,16 @@
 
 package com.maltaisn.notes
 
+import android.app.Activity
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
+import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.maltaisn.notes.di.DaggerAppComponent
 import com.maltaisn.notes.model.NotesDatabase
 import com.maltaisn.notes.model.PrefsManager
@@ -60,6 +65,22 @@ class App : Application() {
             AppTheme.DARK -> AppCompatDelegate.MODE_NIGHT_YES
             AppTheme.SYSTEM -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
         })
+    }
+
+    fun updateLocale(locale: String, activity:Activity?){
+        val appLocale: LocaleListCompat
+        val tag: String = when(locale){
+            "persian" -> "fa-IR"
+            "english" -> "en-US"
+            "system" -> resources.configuration.locales.get(0).toLanguageTag()
+            else -> "en-US"
+        }
+        Log.d("LOCALE", tag + " " + AppCompatDelegate.getApplicationLocales().toLanguageTags())
+        if (tag == AppCompatDelegate.getApplicationLocales().toLanguageTags()) {
+            return
+        }
+        AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(tag))
+        activity?.recreate()
     }
 
     private fun createNotificationChannel() {

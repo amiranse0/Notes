@@ -169,6 +169,7 @@ class PrefsManager @Inject constructor(
     companion object {
         // Settings keys
         const val THEME = "theme"
+        const val LOCALE = "locale"
         const val DYNAMIC_COLORS = "dynamic_colors"
         const val PREVIEW_LABELS = "preview_labels"
         const val PREVIEW_LINES = "preview_lines"
